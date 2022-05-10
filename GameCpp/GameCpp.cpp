@@ -17,11 +17,12 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 시작 주소 -> 여러 개를 실행시켜도 하나의 인스턴스 (가상 메모리 주소)
+                     _In_opt_ HINSTANCE hPrevInstance, // 이전에 실행 된 프로세스의 시작 주소
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+    // 의미없는 코드를 참조하지 않는다고 알려주는 역할
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
