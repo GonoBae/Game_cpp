@@ -17,6 +17,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+// SAL -> 주석언어(설명)
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 시작 주소 -> 여러 개를 실행시켜도 하나의 인스턴스 (가상 메모리 주소)
                      _In_opt_ HINSTANCE hPrevInstance, // 이전에 실행 된 프로세스의 시작 주소
                      _In_ LPWSTR    lpCmdLine,
@@ -31,8 +32,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_GAMECPP, szWindowClass, MAX_LOADSTRING);
+
+    // 윈도우 정보 등록
     MyRegisterClass(hInstance);
 
+    // 윈도우 생성 (창)
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
