@@ -113,6 +113,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
+   // 창을 화면에 띄우는 함수 -> hWnd 로 창의 아이디값을 받아서 동작
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
@@ -129,6 +130,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+// HWND (ID) 를 받아서 메시지를 전달
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -150,15 +152,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-    case WM_PAINT:
+    case WM_PAINT: // 무효화 영역(Invalidate)이 발생한 경우 -> 창이 다시 화면에 나타나는 경우 -> 중단점 걸고 확인해보면 됨
+        // case 문 안에서 지역변수를 선언하고 싶다면 괄호가 필요함 (지역이 필요함)
         {
             PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            
+            // Device Context 만들어서 ID 를 반환
+            HDC hdc = BeginPaint(hWnd, &ps); // 화면을 다시 그려준다.
+            // Device Context -> 그리기 작업을 수행하는데 필요한 Data 집합체
+            // DC 의 목적지는 hWnd
+            // DC 의 펜은 기본 펜 (Black)
+            // DC 의 브러쉬는 기본 브러쉬 (White)
+
             // 윈도우 핸들
-            // 윈도우 좌표 ( 단위는 픽셀, 타이틀 & 메뉴바 밑의 작업공간 왼쪽 상단이 0,0 )
-            // HDC ? 
-            Rectangle(hdc, 10, 10, 110, 110);
+            // 윈도우 좌표 ( 단위는 픽셀 <R , G , B 각 1 바이트>, 타이틀 & 메뉴바 밑의 작업공간 왼쪽 상단이 0,0 )
+            // HDC , HWND , HPEN , HBRUSH ? -> 쓰임새가 다르므로 구분해주기 위해 ( 각 구조체는 int ID 하나만 가지고 있음 )
+            //Rectangle(hdc, 10, 10, 110, 110); // 배경이 White 로 채워진 것
+            
+            // 직접 펜을 만들어서 DC 에 줘보자.
+
+            
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
