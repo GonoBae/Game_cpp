@@ -43,12 +43,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
         return FALSE;
     }
 
+    // 단축키 테이블 정보 로딩
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GAMECPP));
 
     MSG msg;
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    // 메시지 큐에서 메시지가 확인 될 때까지 대기
+    // msg.message == WM_QUIT --> false 반환
+    while (GetMessage(&msg, nullptr, 0, 0)) // True or False 를 반환하는 GetMessage -> While 문이 끝나면 프로그램이 종료됨을 뜻함
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
@@ -151,6 +154,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+            
+            // 윈도우 핸들
+            // 윈도우 좌표 ( 단위는 픽셀, 타이틀 & 메뉴바 밑의 작업공간 왼쪽 상단이 0,0 )
+            // HDC ? 
+            Rectangle(hdc, 10, 10, 110, 110);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
