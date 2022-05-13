@@ -52,15 +52,55 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
     // 겁나 느림 (윈도우메시지 처리떄문에)
     //SetTimer(g_hwnd, 0, 0, nullptr); // 2 번째 인자는 Timer ID , 3 번째 인자가 시간 (ms) -> 0 이라도 컴퓨터 성능에 따라서 최대치로 동작
 
+    // GetMessage
     // 기본 메시지 루프입니다:
     // 메시지 큐에서 메시지가 확인 될 때까지 대기
     // msg.message == WM_QUIT --> false 반환
-    while (GetMessage(&msg, nullptr, 0, 0)) // True or False 를 반환하는 GetMessage -> While 문이 끝나면 프로그램이 종료됨을 뜻함
+
+    // PeekMessage
+    // 메시지 유무와 관계없이 항상 반환됨
+
+    DWORD dwPrevCount = GetTickCount();
+    DWORD dwAccCount = 0;
+    
+
+    while (true) // True or False 를 반환하는 GetMessage -> While 문이 끝나면 프로그램이 종료됨을 뜻함
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) // 메시지큐에서 메시지 확인 후 메시지있으면 true 와 없으면 false 를 반환함
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            int iTime = GetTickCount();
+
+            if (WM_QUIT == msg.message) break;
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+            //int iAdd = (GetTickCount() - iTime);
+            //dwAccCount += iAdd;
+        }
+        else
+        {
+            // 메시지가 없는동안 호출
+            // ------------------------------------------->> 컴퓨터가 얼마나 노는지 체크해보기
+            //DWORD dwCurCount = GetTickCount();
+            //if (dwCurCount - dwPrevCount > 1000)
+            //{
+                //float fRatio = (float)dwAccCount / 1000.f;
+                //wchar_t szBuff[50] = {};
+                //swprintf_s(szBuff, L"비율 : %f", fRatio);
+                //SetWindowText(g_hwnd, szBuff);
+
+                //dwPrevCount = dwCurCount;
+                //dwAccCount = 0;
+            //}
+
+            // -------------------------------------------->> Game 코드 수행
+            // 디자인 패턴 (설계 유형)
+            // Singleton 패턴은 모르면 안됨!!!
+
+
+
         }
     }
 
