@@ -1,8 +1,9 @@
 ﻿// GameCpp.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
-
+#include "pch.h"
 #include "framework.h"
 #include "GameCpp.h"
+#include "CCore.h"
 
 #define MAX_LOADSTRING 100
 
@@ -41,6 +42,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
+        return FALSE;
+    }
+
+    // Core 초기화 -> 초기화 실패하면 FALSE -> 프로그램 종료
+    if (FAILED(CCore::GetInst()->init(g_hwnd, POINT{1280, 768})))
+    {
+        MessageBox(nullptr, L"Core 객체 초기화 실패", L"ERROR", MB_OK);
         return FALSE;
     }
 
@@ -99,7 +107,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
             // 디자인 패턴 (설계 유형)
             // Singleton 패턴은 모르면 안됨!!!
 
-
+            CCore::GetInst()->progress();
 
         }
     }

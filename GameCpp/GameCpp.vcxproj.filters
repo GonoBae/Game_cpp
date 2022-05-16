@@ -17,6 +17,12 @@
     <Filter Include="Engine\02.Core">
       <UniqueIdentifier>{a56b804a-bc94-4aba-a2c2-99ac5c7bb6b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Manager">
+      <UniqueIdentifier>{5568ee77-3236-46a2-9a29-28f8e6921c0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Manager\KeyMgr">
+      <UniqueIdentifier>{4569c02c-92fe-440b-9d5f-bf7583554e2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -34,6 +40,13 @@
     <ClInclude Include="targetver.h">
       <Filter>Default</Filter>
     </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Engine\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>Engine\Manager\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
@@ -52,8 +65,9 @@
     <ClCompile Include="CCore.cpp">
       <Filter>Engine\02.Core</Filter>
     </ClCompile>
-    <ClCompile Include="GameCpp.cpp">
-      <Filter>Default</Filter>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>Engine\Manager\KeyMgr</Filter>
     </ClCompile>
+    <ClCompile Include="GameCpp.cpp" />
   </ItemGroup>
 </Project>
