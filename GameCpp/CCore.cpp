@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CCore.h"
 #include "CObject.h"
+#include "CTimeMgr.h"
+#include "CKeyMgr.h"
 
 //CCore* CCore::g_pInst = nullptr;
 
@@ -18,26 +20,33 @@ CCore::~CCore()
 
 void CCore::update()
 {
+	Vec2 vPos = g_obj.GetPos();
+
 	// 물체들의 변경점을 체크
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000) // 눌렸다면
 	{
-		g_obj.m_ptPos.x -= 1;
+		//vPos.x -= 100.f * DeltaTime;
 	}
 
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 	{
-		g_obj.m_ptPos.x += 1;
+		vPos.x += 0.01;
 	}
+
+	g_obj.SetPos(vPos);
 }
 
 void CCore::render()
 {
+	Vec2 vPos = g_obj.GetPos();
+	Vec2 vScale = g_obj.GetScale();
+
 	// 그리기
 	Rectangle(m_hDC,
-		g_obj.m_ptPos.x - g_obj.m_ptScale.x / 2,
-		g_obj.m_ptPos.y - g_obj.m_ptScale.y / 2,
-		g_obj.m_ptPos.x + g_obj.m_ptScale.x / 2,
-		g_obj.m_ptPos.y + g_obj.m_ptScale.y / 2);
+		int(vPos.x - vScale.x / 2.f),
+		int(vPos.y - vScale.y / 2.f),
+		int(vPos.x + vScale.x / 2.f),
+		int(vPos.y + vScale.y / 2.f));
 }
 
 int CCore::init(HWND _hWnd, POINT _ptResolution)
@@ -58,8 +67,13 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	
 	m_hDC = GetDC(m_hWnd); // 그리기 할 목적지 기입
 
-	g_obj.m_ptPos = POINT{ m_ptResolution.x / 2, m_ptResolution.y / 2 };
-	g_obj.m_ptScale = POINT{ 100, 100 };
+	// Manager 초기화
+	CTimeMgr::GetInst()->init();
+	CKeyMgr::GetInst()->init();
+
+
+	g_obj.SetPos(Vec2((float)(m_ptResolution.x / 2), (float)(m_ptResolution.y / 2)));
+	g_obj.SetScale(Vec2( 100, 100 ));
 
 
 	return S_OK;
@@ -69,7 +83,7 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 
 void CCore::progress()
 {
-	static int callCount = 0;
+	/*static int callCount = 0;
 	callCount++;
 	static int iPrevCount = GetTickCount();
 	int iCurCount = GetTickCount();
@@ -77,7 +91,7 @@ void CCore::progress()
 	{
 		iPrevCount = iCurCount;
 		callCount = 0;
-	}
+	}*/
 
 	update();
 	render();

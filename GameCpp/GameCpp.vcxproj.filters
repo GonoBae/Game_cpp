@@ -17,14 +17,17 @@
     <Filter Include="Engine\02.Core">
       <UniqueIdentifier>{a56b804a-bc94-4aba-a2c2-99ac5c7bb6b9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Manager">
+    <Filter Include="Engine\03.Manager">
       <UniqueIdentifier>{5568ee77-3236-46a2-9a29-28f8e6921c0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Manager\KeyMgr">
+    <Filter Include="Engine\03.Manager\KeyMgr">
       <UniqueIdentifier>{4569c02c-92fe-440b-9d5f-bf7583554e2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Object">
+    <Filter Include="Engine\04.Object">
       <UniqueIdentifier>{900c9686-a23a-4852-924a-b1dd707daea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03.Manager\CTimeMgr">
+      <UniqueIdentifier>{113a4e84-dadf-4500-b39d-3acc4960278c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,10 +50,16 @@
       <Filter>Engine\01.Header</Filter>
     </ClInclude>
     <ClInclude Include="CKeyMgr.h">
-      <Filter>Engine\Manager\KeyMgr</Filter>
+      <Filter>Engine\03.Manager\KeyMgr</Filter>
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="CObject.h" />
+    <ClInclude Include="struct.h">
+      <Filter>Engine\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>Engine\03.Manager\CTimeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
@@ -70,11 +79,14 @@
       <Filter>Engine\02.Core</Filter>
     </ClCompile>
     <ClCompile Include="CKeyMgr.cpp">
-      <Filter>Engine\Manager\KeyMgr</Filter>
+      <Filter>Engine\03.Manager\KeyMgr</Filter>
     </ClCompile>
     <ClCompile Include="GameCpp.cpp" />
     <ClCompile Include="CObject.cpp">
-      <Filter>Engine\Object</Filter>
+      <Filter>Engine\04.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>Engine\03.Manager\CTimeMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
