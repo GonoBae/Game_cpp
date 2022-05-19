@@ -74,6 +74,8 @@ private:
 	void render();
 
 public:
+	HWND GetMainHwnd() { return m_hWnd; }
+
 	int init(HWND _hWnd, POINT _ptResolution);
 	void progress();
 };

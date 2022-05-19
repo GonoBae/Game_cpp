@@ -25,12 +25,12 @@ void CCore::update()
 	// 물체들의 변경점을 체크
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000) // 눌렸다면
 	{
-		//vPos.x -= 100.f * DeltaTime;
+		vPos.x -= 200.f * CTimeMgr::GetInst()->GetfDT();
 	}
 
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 	{
-		vPos.x += 0.01;
+		vPos.x += 200.f * CTimeMgr::GetInst()->GetfDT();
 	}
 
 	g_obj.SetPos(vPos);
@@ -92,6 +92,10 @@ void CCore::progress()
 		iPrevCount = iCurCount;
 		callCount = 0;
 	}*/
+
+	// Manager Update
+	CTimeMgr::GetInst()->update();
+
 
 	update();
 	render();

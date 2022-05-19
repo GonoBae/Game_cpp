@@ -52,7 +52,6 @@
     <ClInclude Include="CKeyMgr.h">
       <Filter>Engine\03.Manager\KeyMgr</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h" />
     <ClInclude Include="CObject.h" />
     <ClInclude Include="struct.h">
       <Filter>Engine\01.Header</Filter>
@@ -60,6 +59,7 @@
     <ClInclude Include="CTimeMgr.h">
       <Filter>Engine\03.Manager\CTimeMgr</Filter>
     </ClInclude>
+    <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
