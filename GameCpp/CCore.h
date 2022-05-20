@@ -70,6 +70,10 @@ private:
 	POINT	m_ptResolution; // 메인 윈도우 해상도
 	HDC m_hDC; // 메인 위도우에 Draw 할 DC
 
+	// 이중 버퍼 (깜빡임 없애기)
+	HBITMAP m_hBit;
+	HDC		m_memDC;
+
 	void update();
 	void render();
 
