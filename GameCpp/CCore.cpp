@@ -27,14 +27,14 @@ void CCore::update()
 	Vec2 vPos = g_obj.GetPos();
 
 	// 물체들의 변경점을 체크
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::TAP) // 눌렸다면
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD)
 	{
-		vPos.x -= 2000.f * CTimeMgr::GetInst()->GetfDT();
+		vPos.x -= 200.f * CTimeMgr::GetInst()->GetfDT();
 	}
 
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::TAP)
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD)
 	{
-		vPos.x += 2000.f * CTimeMgr::GetInst()->GetfDT();
+		vPos.x += 200.f * CTimeMgr::GetInst()->GetfDT();
 	}
 
 	g_obj.SetPos(vPos);
