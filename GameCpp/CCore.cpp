@@ -3,6 +3,7 @@
 #include "CObject.h"
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
+#include "CSceneMgr.h"
 
 //CCore* CCore::g_pInst = nullptr;
 
@@ -90,6 +91,7 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	// Manager 초기화
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
+	CSceneMgr::GetInst()->init();
 
 
 	g_obj.SetPos(Vec2((float)(m_ptResolution.x / 2), (float)(m_ptResolution.y / 2)));
