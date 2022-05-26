@@ -10,5 +10,7 @@ private:
 	CScene* m_pCurScene;					   // 현재 Scene
 public:
 	void init();
+	void update();
+	void render(HDC _dc);
 };
 

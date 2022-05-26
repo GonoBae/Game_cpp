@@ -7,7 +7,7 @@
 
 //CCore* CCore::g_pInst = nullptr;
 
-CObject g_obj;
+//CObject g_obj;
 
 CCore::CCore()
 	: m_hWnd(0), m_ptResolution{}, m_hDC(0), m_hBit(0), m_memDC(0)
@@ -23,42 +23,38 @@ CCore::~CCore()
 	DeleteObject(m_hBit);
 }
 
-void CCore::update()
-{
-	Vec2 vPos = g_obj.GetPos();
+//void CCore::update()
+//{
+//	Vec2 vPos = g_obj.GetPos();
+//
+//	// 물체들의 변경점을 체크
+//	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD)
+//	{
+//		vPos.x -= 200.f * CTimeMgr::GetInst()->GetfDT();
+//	}
+//
+//	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD)
+//	{
+//		vPos.x += 200.f * CTimeMgr::GetInst()->GetfDT();
+//	}
+//
+//	g_obj.SetPos(vPos);
+//}
 
-	// 물체들의 변경점을 체크
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD)
-	{
-		vPos.x -= 200.f * CTimeMgr::GetInst()->GetfDT();
-	}
-
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD)
-	{
-		vPos.x += 200.f * CTimeMgr::GetInst()->GetfDT();
-	}
-
-	g_obj.SetPos(vPos);
-}
-
-void CCore::render()
-{
-	// 화면 Clear
-	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
-
-	Vec2 vPos = g_obj.GetPos();
-	Vec2 vScale = g_obj.GetScale();
-
-	// 그리기 -> 화면에 안나옴
-	Rectangle(m_memDC,
-		int(vPos.x - vScale.x / 2.f),
-		int(vPos.y - vScale.y / 2.f),
-		int(vPos.x + vScale.x / 2.f),
-		int(vPos.y + vScale.y / 2.f));
-
-	// 전달해주기 : 그림을 아무리 많이 그려도 전체를 복사하는 것이기에 고정비용임
-	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
-}
+//void CCore::render()
+//{
+//	Vec2 vPos = g_obj.GetPos();
+//	Vec2 vScale = g_obj.GetScale();
+//
+//	// 그리기 -> 화면에 안나옴
+//	Rectangle(m_memDC,
+//		int(vPos.x - vScale.x / 2.f),
+//		int(vPos.y - vScale.y / 2.f),
+//		int(vPos.x + vScale.x / 2.f),
+//		int(vPos.y + vScale.y / 2.f));
+//
+//	
+//}
 
 int CCore::init(HWND _hWnd, POINT _ptResolution)
 {
@@ -94,8 +90,8 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	CSceneMgr::GetInst()->init();
 
 
-	g_obj.SetPos(Vec2((float)(m_ptResolution.x / 2), (float)(m_ptResolution.y / 2)));
-	g_obj.SetScale(Vec2( 100, 100 ));
+	//g_obj.SetPos(Vec2((float)(m_ptResolution.x / 2), (float)(m_ptResolution.y / 2)));
+	//g_obj.SetScale(Vec2( 100, 100 ));
 
 
 	return S_OK;
@@ -105,6 +101,8 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 
 void CCore::progress()
 {
+	// 메시지를 사용하지 않으므로 여기서 가능해야함
+
 	/*static int callCount = 0;
 	callCount++;
 	static int iPrevCount = GetTickCount();
@@ -118,11 +116,18 @@ void CCore::progress()
 	// Manager Update
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
-
-	update();
-	render();
-
-
-	// 메시지를 사용하지 않으므로 여기서 가능해야함
 	
+	CSceneMgr::GetInst()->update();
+
+
+	// ========
+	// Rendering
+	// ========
+	// 화면 Clear
+	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
+
+	CSceneMgr::GetInst()->render(m_memDC); // memDC 를 전달해주어야 어디에 그릴지 알 수 있음
+
+	// 전달해주기 : 그림을 아무리 많이 그려도 전체를 복사하는 것이기에 고정비용임
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
 }

@@ -74,8 +74,8 @@ private:
 	HBITMAP m_hBit;
 	HDC		m_memDC;
 
-	void update();
-	void render();
+	//void update();
+	//void render();
 
 public:
 	HWND GetMainHwnd() { return m_hWnd; }
