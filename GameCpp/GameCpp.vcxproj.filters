@@ -32,12 +32,6 @@
     <Filter Include="Engine\05.Scene">
       <UniqueIdentifier>{9ac3f9a2-e73b-4f52-bfb4-5e169d4c6970}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04.Object\NewFilter1">
-      <UniqueIdentifier>{38fb3e2a-5a14-4ca2-a548-f3aacda52f65}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04.Object\NewFilter2">
-      <UniqueIdentifier>{18f6b54d-f30f-4014-82d1-3c028b7af07b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03.Manager\SceneMgr">
       <UniqueIdentifier>{89ff3d2a-9a90-493e-acbd-038ef00fc38f}</UniqueIdentifier>
     </Filter>
@@ -46,6 +40,15 @@
     </Filter>
     <Filter Include="Engine\05.Scene\Scene_Tool">
       <UniqueIdentifier>{dcc1637d-184a-42bc-8ba9-9f8a196ea7ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\Player">
+      <UniqueIdentifier>{38fb3e2a-5a14-4ca2-a548-f3aacda52f65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\Monster">
+      <UniqueIdentifier>{18f6b54d-f30f-4014-82d1-3c028b7af07b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04.Object\Missile">
+      <UniqueIdentifier>{ac634bbe-0b54-4c32-92c8-98479fb03e8d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +92,15 @@
     <ClInclude Include="CScene_Start.h">
       <Filter>Engine\05.Scene\Scene_Start</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Engine\04.Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Engine\04.Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CMissile.h">
+      <Filter>Engine\04.Object\Missile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
@@ -125,6 +137,15 @@
     </ClCompile>
     <ClCompile Include="CScene_Start.cpp">
       <Filter>Engine\05.Scene\Scene_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Engine\04.Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Engine\04.Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CMissile.cpp">
+      <Filter>Engine\04.Object\Missile</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

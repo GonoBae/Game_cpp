@@ -79,6 +79,7 @@ private:
 
 public:
 	HWND GetMainHwnd() { return m_hWnd; }
+	POINT GetResolution() { return m_ptResolution; }
 
 	int init(HWND _hWnd, POINT _ptResolution);
 	void progress();
