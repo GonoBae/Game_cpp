@@ -3,7 +3,12 @@
 class CPlayer :
     public CObject
 {
+private:
+    void CreateMissile();
+
 public:
     virtual void update();
+
+
 };
 

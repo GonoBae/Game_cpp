@@ -11,12 +11,6 @@ private:
 													  // 오브젝트 저장 및 관리할 벡터를 그룹 개수만큼 선언
 	wstring			 m_strName; // Scene 이름
 
-protected:
-	void AddObject(CObject* _pObj, GROUP_TYPE _eType) // 헤더에 구현해서 inline 처리 (함수 호출비용 없음)
-	{
-		m_arrObj[(UINT)_eType].push_back(_pObj);
-	}
-
 public:
 	CScene();
 	virtual ~CScene(); // 꼭 알아두자. (상속시킬 부모는 소멸자를 virtual)
@@ -29,5 +23,11 @@ public:
 
 	void update();
 	void render(HDC _dc);
+
+
+	void AddObject(CObject* _pObj, GROUP_TYPE _eType) // 헤더에 구현해서 inline 처리 (함수 호출비용 없음)
+	{
+		m_arrObj[(UINT)_eType].push_back(_pObj);
+	}
 };
 
