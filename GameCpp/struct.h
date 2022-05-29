@@ -29,4 +29,16 @@ public:
 		x = (float)_pt.x;
 		y = (float)_pt.y;
 	}
+
+	float Length() { return sqrt(x * x + y * y); }
+
+	// 자기자신을 반환
+	Vec2& Normalize()
+	{
+		float fLen = Length();
+		assert(fLen != 0.f); // 조건을 만족하지 않으면 경고
+		x /= fLen;
+		y /= fLen;
+		return *this;
+	}
 };
