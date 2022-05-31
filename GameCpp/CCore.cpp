@@ -4,6 +4,7 @@
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CSceneMgr.h"
+#include "CPathMgr.h"
 
 //CCore* CCore::g_pInst = nullptr;
 
@@ -85,6 +86,7 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 
 
 	// Manager 초기화
+	CPathMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
 	CSceneMgr::GetInst()->init();
@@ -130,4 +132,6 @@ void CCore::progress()
 
 	// 전달해주기 : 그림을 아무리 많이 그려도 전체를 복사하는 것이기에 고정비용임
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
+
+	CTimeMgr::GetInst()->render();
 }

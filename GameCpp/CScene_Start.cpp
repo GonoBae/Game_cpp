@@ -6,6 +6,9 @@
 #include "CMonster.h"
 #include "CCore.h"
 
+#include "CPathMgr.h"
+#include "CTexture.h"
+
 
 CScene_Start::CScene_Start()
 {
@@ -17,7 +20,14 @@ CScene_Start::~CScene_Start()
 
 void CScene_Start::Enter()
 {
-	// Object 추가
+	// Texture 로딩하기
+	CTexture* pTex = new CTexture;
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += L"texture\\RedPotion.bmp";
+	pTex->Load(strFilePath);
+
+	delete pTex;
+
 
 	// Player Object 추가
 	CObject* pObj = new CPlayer;

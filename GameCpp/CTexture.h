@@ -12,5 +12,7 @@ private:
 public:
     CTexture();
     ~CTexture();
+
+    void Load(const wstring& _strFilePath);
 };
 
