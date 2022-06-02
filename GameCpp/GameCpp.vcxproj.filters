@@ -122,7 +122,9 @@
     <ClInclude Include="CSound.h">
       <Filter>Engine\06.Resource\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="CPathMgr.h" />
+    <ClInclude Include="CPathMgr.h">
+      <Filter>Engine\03.Manager\PathMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
@@ -178,6 +180,8 @@
     <ClCompile Include="CSound.cpp">
       <Filter>Engine\06.Resource\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="CPathMgr.cpp" />
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>Engine\03.Manager\PathMgr</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

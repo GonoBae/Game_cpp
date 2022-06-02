@@ -11,5 +11,10 @@ using std::wstring;
 
 #include <cassert>
 
+// 라이브러리 참조 TransparentBlt
+#pragma comment (lib, "Msimg32.lib")
+
+
+
 #include "define.h"
 #include "struct.h"

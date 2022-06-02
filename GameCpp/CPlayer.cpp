@@ -6,6 +6,25 @@
 #include "CMissile.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
+#include "CTexture.h"
+#include "CPathMgr.h"
+
+CPlayer::CPlayer()
+	: m_pTex(nullptr)
+{
+	// Texture 로딩하기
+	m_pTex = new CTexture;
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += L"texture\\FLY.bmp";
+	m_pTex->Load(strFilePath);
+}
+
+CPlayer::~CPlayer()
+{
+	if(nullptr != m_pTex) delete m_pTex;
+}
+
+
 
 void CPlayer::CreateMissile()
 {
@@ -68,4 +87,27 @@ void CPlayer::update()
 	}
 
 	SetPos(vPos);
+}
+
+void CPlayer::render(HDC _dc)
+{
+	int iWidth = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
+
+	Vec2 vPos = GetPos();
+	
+	// 전체 픽셀을 옮겨옴
+	//BitBlt(_dc, 
+	//	(int)(vPos.x - (float)(iWidth / 2)), 
+	//	(int)(vPos.y - (float)(iHeight / 2)), 
+	//	iWidth, iHeight, m_pTex->GetDC(), 
+	//	0, 0, SRCCOPY); // 좌상단 좌표 , 가로 세로 길이, DC, 옮길이미지 좌상단
+
+	// 지정한 조건의 색은 투명처리
+	TransparentBlt(_dc,
+		(int)(vPos.x - (float)(iWidth / 2)),
+		(int)(vPos.y - (float)(iHeight / 2)),
+		iWidth, iHeight, m_pTex->GetDC(),
+		0, 0, iWidth, iHeight,
+		RGB(255, 0, 255));
 }
