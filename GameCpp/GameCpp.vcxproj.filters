@@ -62,6 +62,12 @@
     <Filter Include="Engine\03.Manager\PathMgr">
       <UniqueIdentifier>{b5c2cfad-c725-4b6c-9913-1c7a4a43de76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03.Manager\ResMgr">
+      <UniqueIdentifier>{97a144bd-7b06-42b6-b2ec-7ae1059fbe00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07.Component">
+      <UniqueIdentifier>{d3fc066f-5c85-4540-b39e-39e7d9d82388}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -125,6 +131,12 @@
     <ClInclude Include="CPathMgr.h">
       <Filter>Engine\03.Manager\PathMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>Engine\03.Manager\ResMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Engine\07.Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
@@ -182,6 +194,12 @@
     </ClCompile>
     <ClCompile Include="CPathMgr.cpp">
       <Filter>Engine\03.Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>Engine\03.Manager\ResMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Engine\07.Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
 CMonster::CMonster()
 	: m_fSpeed(100.0f), m_vCenterPos(Vec2(0.f, 0.f)), m_fMaxDistance(50.0f), m_iDir(1)
 {
+	CreateCollider();
 }
 
 CMonster::~CMonster()

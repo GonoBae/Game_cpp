@@ -6,7 +6,7 @@
 CMissile::CMissile()
 	: m_fTheta(0.f), m_vDir(Vec2(0.f, 0.f))
 {
-
+	CreateCollider();
 }
 
 CMissile::~CMissile()

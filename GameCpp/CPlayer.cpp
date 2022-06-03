@@ -6,22 +6,22 @@
 #include "CMissile.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
+
 #include "CTexture.h"
-#include "CPathMgr.h"
+#include "CResMgr.h"
 
 CPlayer::CPlayer()
 	: m_pTex(nullptr)
 {
 	// Texture 로딩하기
-	m_pTex = new CTexture;
-	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
-	strFilePath += L"texture\\FLY.bmp";
-	m_pTex->Load(strFilePath);
+	m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\FLY.bmp");
+
+	CreateCollider();
 }
 
 CPlayer::~CPlayer()
 {
-	if(nullptr != m_pTex) delete m_pTex;
+	
 }
 
 

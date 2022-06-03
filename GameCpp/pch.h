@@ -14,7 +14,9 @@ using std::wstring;
 // 라이브러리 참조 TransparentBlt
 #pragma comment (lib, "Msimg32.lib")
 
-
+#include <map>
+using std::map;
+using std::make_pair;
 
 #include "define.h"
 #include "struct.h"

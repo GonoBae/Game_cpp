@@ -25,6 +25,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+    // 메모리 릭(누수) 체크
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    
+    // 문제가 발생하면 그 지점에 브레이크 걸어줌
+    //_CrtSetBreakAlloc();
+
+
+
+
+
     // 의미없는 코드를 참조하지 않는다고 알려주는 역할
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);

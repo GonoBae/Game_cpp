@@ -36,6 +36,8 @@ void CSceneMgr::update()
 {
 	// 현재씬을 업데이트
 	m_pCurScene->update();
+
+	m_pCurScene->finalupdate();
 }
 
 void CSceneMgr::render(HDC _dc)

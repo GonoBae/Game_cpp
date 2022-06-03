@@ -1,11 +1,15 @@
 #pragma once
-// 화면에 나타나는 물체
+// 화면에 나타나는 물체 (Game or UI)
+
+class CCollider;
 
 class CObject
 {
 private:
 	Vec2 m_vPos;
 	Vec2 m_vScale;
+
+	CCollider* m_pCollider;
 
 public:
 	CObject();
@@ -18,6 +22,9 @@ public:
 	Vec2 GetScale() { return m_vScale; }
 
 	virtual void update() = 0;
+	virtual void finalupdate() final; // 자식 클래스가 더이상 오버라이딩 할 수 없음
 	virtual void render(HDC _dc);
+
+	void CreateCollider();
 };
 
