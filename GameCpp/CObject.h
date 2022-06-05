@@ -20,11 +20,15 @@ public:
 
 	Vec2 GetPos() { return m_vPos; }
 	Vec2 GetScale() { return m_vScale; }
+	CCollider* GetCollider() { return m_pCollider; }
 
 	virtual void update() = 0;
 	virtual void finalupdate() final; // 자식 클래스가 더이상 오버라이딩 할 수 없음
 	virtual void render(HDC _dc);
+	void component_render(HDC _dc);
 
 	void CreateCollider();
+
+	
 };
 

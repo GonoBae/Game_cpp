@@ -68,6 +68,9 @@
     <Filter Include="Engine\07.Component">
       <UniqueIdentifier>{d3fc066f-5c85-4540-b39e-39e7d9d82388}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\08.Module">
+      <UniqueIdentifier>{7dc3db0c-c6ec-46e9-97c4-cde482449d0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -137,6 +140,7 @@
     <ClInclude Include="CCollider.h">
       <Filter>Engine\07.Component</Filter>
     </ClInclude>
+    <ClInclude Include="SelectGDI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameCpp.rc">
@@ -201,5 +205,6 @@
     <ClCompile Include="CCollider.cpp">
       <Filter>Engine\07.Component</Filter>
     </ClCompile>
+    <ClCompile Include="SelectGDI.cpp" />
   </ItemGroup>
 </Project>

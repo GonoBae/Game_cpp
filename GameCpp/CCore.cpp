@@ -11,7 +11,7 @@
 //CObject g_obj;
 
 CCore::CCore()
-	: m_hWnd(0), m_ptResolution{}, m_hDC(0), m_hBit(0), m_memDC(0)
+	: m_hWnd(0), m_ptResolution{}, m_hDC(0), m_hBit(0), m_memDC(0), m_arrBrush{}, m_arrPen{}
 {
 }
 
@@ -22,6 +22,11 @@ CCore::~CCore()
 	// Create 으로 만든건 Delete 로 지우라고 나와있음
 	DeleteDC(m_memDC);
 	DeleteObject(m_hBit);
+
+	for (int i = 0; i < (UINT)PEN_TYPE::END; ++i)
+	{
+		DeleteObject(m_arrPen[i]);
+	}
 }
 
 //void CCore::update()
@@ -57,6 +62,17 @@ CCore::~CCore()
 //	
 //}
 
+void CCore::CreateBrushPen()
+{
+	// hollow brush
+	m_arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
+
+	// red blue green pen
+	m_arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	m_arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
+	m_arrPen[(UINT)PEN_TYPE::GREEN] = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+}
+
 int CCore::init(HWND _hWnd, POINT _ptResolution)
 {
 	//if (FAILED(S_OK)) // FAILED 매크로 : 음수이면 참 -> 에러
@@ -84,6 +100,8 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	HBITMAP hOldBit = (HBITMAP)SelectObject(m_memDC, m_hBit); // 그림을 그릴 타겟을 바꿔줌 -> 디폴트(1픽셀) 비트맵을 반환
 	DeleteObject(hOldBit); // 디폴트 비트맵 삭제
 
+	// 자주 사용 할 펜 및 브러쉬 생성
+	CreateBrushPen();
 
 	// Manager 초기화
 	CPathMgr::GetInst()->init();
