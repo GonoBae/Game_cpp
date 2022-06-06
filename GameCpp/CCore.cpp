@@ -5,6 +5,7 @@
 #include "CKeyMgr.h"
 #include "CSceneMgr.h"
 #include "CPathMgr.h"
+#include "CCollisionMgr.h"
 
 //CCore* CCore::g_pInst = nullptr;
 
@@ -138,7 +139,7 @@ void CCore::progress()
 	CKeyMgr::GetInst()->update();
 	
 	CSceneMgr::GetInst()->update();
-
+	CCollisionMgr::GetInst()->update();
 
 	// ========
 	// Rendering

@@ -18,7 +18,8 @@ CPlayer::CPlayer()
 	m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\FLY.bmp");
 
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(50.f, 50.f));
+	GetCollider()->SetOffSetPos(Vec2(0.f, 10.f));
+	GetCollider()->SetScale(Vec2(20.f, 40.f));
 }
 
 CPlayer::~CPlayer()
