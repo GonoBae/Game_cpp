@@ -30,5 +30,10 @@ public:
 	{
 		m_arrObj[(UINT)_eType].push_back(_pObj);
 	}
+
+	const vector<CObject*>& GetGroupObject(GROUP_TYPE _eType) // 그룹 자체를 주기위해 참조형 반환 (원본을 훼손하지 못하도록)
+	{
+		return m_arrObj[(UINT)_eType];
+	}
 };
 

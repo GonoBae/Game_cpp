@@ -6,8 +6,11 @@
 
 #include "SelectGDI.h"
 
+UINT CCollider::g_iNextID = 0;
+
+// 생성될 때 마다 아이디 가지고 하나씩 증가시켜 절대 중복안됨
 CCollider::CCollider()
-	: m_pOwner(nullptr)
+	: m_pOwner(nullptr) , m_iID(g_iNextID++)
 {
 }
 
